@@ -17,12 +17,12 @@ const categories = [
   "Philosophy",
 ];
 
-  
+
 export default function NavBar() {
   return (
     <nav>
-      <SearchBar/>
-      <CategoryList categories={categories}/>
+      <SearchBar />
+      <CategoryList categories={categories} />
     </nav>
   );
 }
@@ -36,11 +36,11 @@ function Category({ category }) {
 }
 
 
-function CategoryList({categories}){
+function CategoryList({ categories }) {
   return (
-  <div className="category-list">
-    {categories.map((category) => (
-      <Category key={category} category={category}/>
-    ))}
-  </div>);
+    <div className="category-list">
+      {categories.map((category) => (
+        <Category key={category} category={category} />
+      ))}
+    </div>);
 }

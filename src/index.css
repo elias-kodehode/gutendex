@@ -37,3 +37,11 @@ ul {
 ul li.book{
     list-style-type: none;
 }
+
+.summary{
+    border: 1px solid black;
+    padding: 5px;
+}
+.summary p{
+    text-overflow: balance;
+}

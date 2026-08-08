@@ -12,15 +12,14 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <Home /> },
             { path: "/:category", element: <Home/>},
-            // { path: "/books/:book", element: <Books/>}
         ]
     },
     {
-        path: "/books/",
+        path: "/books",
         element: <BooksLayout/>,
         children: [
-            {index: true, element: <Books/>},
-            {path: "/books/:book", element: <Books/>}
+            { index: true, element: <Books/>},
+            { path: "/books/:bookId", element: <Books/>}
         ]
     },
     { path: "*", element: <NotFound /> }

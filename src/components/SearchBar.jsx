@@ -1,7 +1,9 @@
 export default function SearchBar() {
   return (
     <>
-      <input placeholder="title"/>
+      <input style={{
+      }}
+        placeholder="title" />
     </>
   );
 }

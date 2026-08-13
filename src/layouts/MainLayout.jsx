@@ -8,20 +8,20 @@ export default function MainLayout() {
             style={{
                 minHeight: "100vh",
                 display: "flex",
-                flexDirection: "column"
+                flexDirection: "column",
             }}
         >
             <header>
                 <NavBar />
             </header>
 
-            <main style={{ flex: 1, border: "1px solid white" }}>
+            <main style={{ flex: 1, borderTop: "1px solid white" }}>
                 <Outlet />
             </main>
 
             <footer>
                 <Footer />
             </footer>
-        </div>
+        </div >
     );
 }

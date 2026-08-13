@@ -1,11 +1,21 @@
 
+/* *{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsl(210, 14%, 7%);
+}
+
 a.category{
-    border: 2px solid black;
+    border: 2px solid rgb(236, 235, 235);
     border-radius: 25px;
     padding: 5px 20px;
     background-color: transparent;
     text-decoration: none;
-    color: black;
+    color: rgb(155, 155, 155);
 }
 
 a.active.category{
@@ -44,4 +54,4 @@ ul li.book{
 }
 .summary p{
     text-overflow: balance;
-}
+} */

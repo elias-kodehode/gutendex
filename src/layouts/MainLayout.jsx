@@ -3,25 +3,25 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 export default function MainLayout() {
-    return (
-        <div
-            style={{
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-            }}
-        >
-            <header>
-                <NavBar />
-            </header>
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <header>
+        <NavBar />
+      </header>
 
-            <main style={{ flex: 1, borderTop: "1px solid white" }}>
-                <Outlet />
-            </main>
+      <main style={{ flex: 1, borderTop: "1px solid white" }}>
+        <Outlet />
+      </main>
 
-            <footer>
-                <Footer />
-            </footer>
-        </div >
-    );
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
 }

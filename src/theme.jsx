@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles";
+import { red } from "@mui/material/colors";
 
 // const theme = createTheme({
 //     cssVariables: true,
@@ -22,8 +22,8 @@ import { red } from '@mui/material/colors';
 //     },
 // });
 const theme = createTheme({
-    palette: {
-        mode: "dark",
-    },
+  palette: {
+    mode: "dark",
+  },
 });
 export default theme;

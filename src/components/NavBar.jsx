@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import HomeIcon from '@mui/icons-material/Home';
+import Icon from '@mui/material/Icon';
 const categories = [
   "Fiction",
   "Mystery",

@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams, NavLink, useNavigate } from "react-router-dom";
 import Link from "../components/Link"
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import { Button, CircularProgress, LinearProgress, Pagination, PaginationItem } from "@mui/material";
+import { getBooksByCategory } from "../query/getBooksByCategory";
+
+// async function fetchBooks(category, page) {
+//   console.time(`Fetching ${category}`)
+
+//   const params = new URLSearchParams({
+//     topic: category,
+//     page: page
+//   });
 
 
-async function fetchBooks(category, page) {
-  console.time(`Fetching ${category}`)
+//   console.log("Params: ", params);
+//   //?topic=${category}&page=${page}
+//   const response = await fetch(`https://gutendex.com/books?${params.toString()}`);
+//   const data = await response.json();
 
-  const params = new URLSearchParams({
-    topic: category,
-    page: page
-  });
-
-
-  console.log("Params: ", params);
-  //?topic=${category}&page=${page}
-  const response = await fetch(`https://gutendex.com/books?${params.toString()}`);
-  const data = await response.json();
-
-  console.timeEnd(`Fetching ${category}`)
-  return data;
-}
+//   console.timeEnd(`Fetching ${category}`)
+//   return data;
+// }
 
 export default function Home() {
 
@@ -33,12 +33,14 @@ export default function Home() {
   const currentPage = Number(page) || 1;
 
 
-  const { data, isLoading, isError, error, isFetching } = useQuery({
-    queryKey: ["books", category, currentPage],
-    queryFn: () => fetchBooks(category, currentPage),
-    placeholderData: (previous) => previous,
-    staleTime: 1000 * 60 * 30 //30 min
-  })
+  const { data, isLoading, isError, error, isFetching } = getBooksByCategory(category, currentPage);
+
+  // const { data, isLoading, isError, error, isFetching } = useQuery({
+  //   queryKey: ["books", category || "fiction", currentPage],
+  //   queryFn: () => fetchBooks(category || "fiction", currentPage),
+  //   placeholderData: (previous) => previous,
+  //   staleTime: 1000 * 60 * 30 //30 min
+  // })
 
   if (isLoading) {
     return <>
@@ -51,6 +53,7 @@ export default function Home() {
   if (isError) {
     return <p>{error.message}</p>
   }
+
   const totalPages = Math.ceil(data.count / 32);
 
   return (
@@ -76,7 +79,7 @@ export default function Home() {
 function BookList({ category, books }) {
   return (
     <>
-      <h1>{category.toUpperCase()}</h1>
+      <h1>{category}</h1>
       <ul>
         {books.map((book) => (
           <Book book={book} key={book.id} />
@@ -89,7 +92,7 @@ function BookList({ category, books }) {
 function Book({ book }) {
   return (
     <li className="book">
-      <Link to={`/books/${book.id}`}>
+      <Link to={`/books/id/${book.id}`}>
         {book.title}
       </Link>
     </li>);

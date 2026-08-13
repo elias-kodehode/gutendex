@@ -3,28 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Link from "../components/Link";
+import getBookById from "../query/getBooksById";
 
-async function fetchBookById(id) {
-
-    const response = await fetch(`https://gutendex.com/books/${id}`, {
-        method: "GET",
-
-    });
-    const result = await response.json();
-    console.log(result);
-    return result;
-}
 
 export default function BookDetails() {
     const { bookId } = useParams();
     const [book, setBook] = useState(null);
 
-    const { data, isLoading, isError, error, isFetching } = useQuery({
-        queryKey: ["book", bookId],
-        queryFn: () => fetchBookById(bookId),
-        placeholderData: (previous) => previous,
-        staleTime: 1000 * 60 * 30 //30 min
-    });
+    const { data, isLoading, isError, error, isFetching } = getBookById(bookId);
 
     if (isLoading) {
         return <p>Loading..</p>

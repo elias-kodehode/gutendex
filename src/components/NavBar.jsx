@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import HomeIcon from "@mui/icons-material/Home";
-import Icon from "@mui/material/Icon";
+import IconButton from '@mui/material/IconButton';
 const categories = [
   "Fiction",
   "Mystery",
@@ -24,14 +24,16 @@ export default function NavBar() {
   return (
     <nav
       style={{
-        display: "flex",
-        flex: "1",
-        flexDirection: "row",
+        display: "inline-flex",
+        // flex: "1",
+        // flexDirection: "row",
         padding: "8px",
         justifyContent: "space-around",
       }}
     >
-      <SearchBar />
+      <IconButton>
+        <HomeIcon />
+      </IconButton>
       <CategoryList categories={categories} />
     </nav>
   );

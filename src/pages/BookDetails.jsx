@@ -34,7 +34,7 @@ export default function BookDetails() {
         ))}
       </ul>
 
-      <Link to={formats["text/html"]}>Hi</Link>
+      <Link to={formats["text/html"]}>E-Book</Link>
       <Button>Favourite</Button>
     </div>
   );

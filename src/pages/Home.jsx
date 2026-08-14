@@ -13,7 +13,7 @@ import {
   Pagination,
   PaginationItem,
 } from "@mui/material";
-import { getBooksByCategory } from "../query/getBooksByCategory";
+import { getBooksByCategory } from "../queries/getBooksByCategory";
 
 export default function Home() {
   const { category, page } = useParams();
@@ -66,7 +66,7 @@ export default function Home() {
 function BookList({ category, books }) {
   return (
     <>
-      <h1>{category}</h1>
+      <h1>{category.toUpperCase()}</h1>
       <ul>
         {books.map((book) => (
           <Book book={book} key={book.id} />

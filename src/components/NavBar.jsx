@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import { NavLink } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import HomeIcon from "@mui/icons-material/Home";
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
 const categories = [
   "Fiction",
   "Mystery",
@@ -34,6 +34,7 @@ export default function NavBar() {
       <IconButton>
         <HomeIcon />
       </IconButton>
+      <SearchBar />
       <CategoryList categories={categories} />
     </nav>
   );

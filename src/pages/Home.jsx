@@ -14,6 +14,7 @@ import {
   PaginationItem,
 } from "@mui/material";
 import { getBooksByCategory } from "../queries/getBooksByCategory";
+import { useEventListener } from "../hooks/eventListener";
 
 export default function Home() {
   const { category, page } = useParams();
@@ -21,6 +22,22 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const currentPage = Number(page) || 1;
+
+  const eventListener = useEventListener("onCategoryChanged", async (e) => {
+
+    if (!e || !e.category) {
+      console.error("missing arguments");
+      return;
+    }
+    const cat = e.category.toLowerCase();
+
+    if (cat === "none") {
+      console.log("---");
+      await navigate("/");
+      return;
+    }
+    navigate(`/books/category/${cat}`)
+  });
 
   const { data, isLoading, isError, error, isFetching } = getBooksByCategory(
     category,
@@ -66,7 +83,7 @@ export default function Home() {
 function BookList({ category, books }) {
   return (
     <>
-      <h1>{category.toUpperCase()}</h1>
+      <h1>{category?.toUpperCase()}</h1>
       <ul>
         {books.map((book) => (
           <Book book={book} key={book.id} />

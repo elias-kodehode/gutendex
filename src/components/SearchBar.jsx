@@ -11,12 +11,13 @@ export default function SearchBar() {
       return;
     }
 
-    const timeout = setTimeout(async () => {}, 300);
+    const timeout = setTimeout(async () => { }, 300);
     return () => clearTimeout(timeout);
   }, [search]);
 
   return (
     <TextField
+      fullWidth
       id="outlined-basic"
       label="Search"
       variant="outlined"

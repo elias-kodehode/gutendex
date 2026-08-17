@@ -3,14 +3,15 @@ import MainLayout from "../layouts/MainLayout";
 import NotFound from "../components/NotFound";
 import Home from "../pages/Home";
 import BookDetails from "../pages/BookDetails";
+import TempHome from "../pages/TempHome";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: "", element: <Navigate /> }
+      { index: true, element: <TempHome /> },
+      { path: "/:category", element: <TempHome /> }
     ]
     // children: [
     //   // { index: true, element: <Home /> },

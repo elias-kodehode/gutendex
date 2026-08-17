@@ -1,18 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  useParams,
-  useSearchParams,
-  NavLink,
-  useNavigate,
-} from "react-router-dom";
+import { useParams, useSearchParams, NavLink, useNavigate } from "react-router-dom";
 import Link from "../components/Link";
-import {
-  Button,
-  CircularProgress,
-  LinearProgress,
-  Pagination,
-  PaginationItem,
-} from "@mui/material";
+import { Button, CircularProgress, LinearProgress, Pagination, PaginationItem } from "@mui/material";
 import { getBooksByCategory } from "../queries/getBooksByCategory";
 import { useEventListener } from "../hooks/eventListener";
 
@@ -32,7 +21,6 @@ export default function Home() {
     const cat = e.category.toLowerCase();
 
     if (cat === "none") {
-      console.log("---");
       await navigate("/");
       return;
     }

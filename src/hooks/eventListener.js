@@ -1,13 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export function useEventListener(eventName, handler){
-    useEffect(() => {
+export function useEventListener(eventName, handler) {
+  const handlerRef = useRef(handler);
 
-        const eventHandler = (event) => {
-            handler(event.detail);
-        }
+  useEffect(() => {
+    handlerRef.current = handler;
+  }, [handler]);
 
-        document.addEventListener(eventName, eventHandler);
-        return () => document.removeEventListener(eventName, eventHandler);
-    }, [eventName, handler]);
+  useEffect(() => {
+    const eventHandler = (event) => {
+      //   handler(event.detail);
+      handlerRef.current(event.detail);
+    };
+
+    document.addEventListener(eventName, eventHandler);
+    return () => document.removeEventListener(eventName, eventHandler);
+  }, [eventName]);
 }

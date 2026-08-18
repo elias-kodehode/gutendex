@@ -25,9 +25,9 @@ function Header() {
   return (
     <header>
       <Stack direction="row" spacing={2}>
-        <IconButton >
+        {/* <IconButton >
           <HomeIcon />
-        </IconButton>
+        </IconButton> */}
         <SearchBar />
         <CategorySelection />
       </Stack>
